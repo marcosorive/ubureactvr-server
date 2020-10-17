@@ -6,9 +6,9 @@ export class ModelService {
 
     constructor(private modelRepository: ModelRepository) {}
 
-    public getAll(): Promise<any> {
+    public async getAll(): Promise<any> {
         try {
-            return this.modelRepository.getAll();
+            return await this.modelRepository.getAll();
         }
         catch (error) {
             Bootstrap.logger.log("error", "ModelService: (getAll) " + error);
@@ -16,9 +16,9 @@ export class ModelService {
         }
     }
 
-    public getById(modelId: string) {
+    public async getById(modelId: string) {
         try {
-            return this.modelRepository.getById(modelId);
+            return await this.modelRepository.getById(modelId);
         }
         catch (error) {
             Bootstrap.logger.log("error", "ModelService: (getById) " + error);
@@ -26,9 +26,9 @@ export class ModelService {
         }
     }
 
-    public deleteById(modelId: string) {
+    public async deleteById(modelId: string) {
         try {
-            return this.modelRepository.deleteById(modelId);
+            return await this.modelRepository.deleteById(modelId);
         }
         catch (error) {
             Bootstrap.logger.log("error", "ModelService: (deleteById) " + error);
@@ -36,9 +36,9 @@ export class ModelService {
         }
     }
 
-    public addModel( modelName: string, modelDiskSize: number): Promise<any> {
+    public async addModel( modelName: string, modelDiskSize: number): Promise<any> {
         try {
-            return this.modelRepository.add(modelName, modelDiskSize, Date.now());
+            return await this.modelRepository.add(modelName, modelDiskSize, Date.now());
         }
         catch (error) {
             Bootstrap.logger.log("error", "ModelService: (addModel) " + error);
