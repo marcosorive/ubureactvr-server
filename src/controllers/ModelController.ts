@@ -63,9 +63,9 @@ export class ModelController {
     public static async uploadModel(req: Request, res: Response): Promise<void> {
         try {
             const modelName: string = req.body.modelName;
-            const modelFile: UploadedFile = req.files.modelFile as UploadedFile;
-            const textureFile: UploadedFile = req.files.textureFile as UploadedFile;
-            const modelPicture: UploadedFile = req.files.modelPicture as UploadedFile;
+            const modelFile: UploadedFile = Array.isArray(req.files.modelFile) ? req.files.modelFile[0] : req.files.modelFile;
+            const textureFile: UploadedFile = Array.isArray(req.files.textureFile) ? req.files.textureFile[0] : req.files.textureFile;
+            const modelPicture: UploadedFile = Array.isArray(req.files.modelPicture) ? req.files.modelPicture[0] : req.files.modelPicture;
             const model = await Bootstrap.modelService.addModel(modelName, modelFile.data.length);
             if (textureFile != null) {
                 Bootstrap.fileModelService.add(model._id, modelFile, textureFile);
