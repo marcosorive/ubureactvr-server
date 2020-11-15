@@ -3,8 +3,7 @@ import { UploadedFile } from "express-fileupload";
 import * as fse from  "fs-extra";
 import { Bootstrap } from "../Bootstrap";
 import { ModelRepository } from "../repository/ModelRepository";
-const pictureDir = "../../public/img/";
-
+import { pictureDir } from "../utils/constants";
 
 export class ImageService {
 
